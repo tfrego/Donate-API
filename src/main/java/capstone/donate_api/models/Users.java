@@ -5,25 +5,25 @@ import org.springframework.data.annotation.Id;
 
 public class Users {
 	@Id
-	public ObjectId _id;
+	public ObjectId id;
 	
 	public String name;
 	public String email;
-	public String account_type;
+	public String accountType;
 	public Location location;
 	
 	public Users() {}
 	
-	public Users(ObjectId _id, String name, String email, String account_type, Location location) {
-		this._id = _id;
+	public Users(ObjectId id, String name, String email, String accountType, Location location) {
+		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.account_type = account_type;
+		this.accountType = accountType;
 		this.location = location;
 	}
 	
-	public String get_id() { return _id.toHexString(); }
-	public void set_id(ObjectId _id) { this._id = _id; }
+	public String getId() { return id.toHexString(); }
+	public void setId(ObjectId id) { this.id = id; }
 	
 	public String getName() { return name; }
 	public void setName(String name) { this.name = name; }
@@ -31,8 +31,8 @@ public class Users {
 	public String getEmail() { return email; }
 	public void setEmail(String email) { this.email = email; }
 	
-	public String getAccount_type() { return account_type; }
-	public void setAccount_type(String account_type) { this.account_type = account_type; }
+	public String getAccountType() { return accountType; }
+	public void setAccountType(String accountType) { this.accountType = accountType; }
 	
 	public Location getLocation() { return location; }
 	public void setLocation(Location location) { this.location = location; }

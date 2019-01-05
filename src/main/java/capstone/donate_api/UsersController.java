@@ -29,25 +29,25 @@ public class UsersController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Users getUserById(@PathVariable("id") ObjectId id) {
-		return repository.findBy_id(id);
+		return repository.findById(id);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public void modifyUserById(@PathVariable("id") ObjectId id, @Valid @RequestBody Users users) {
-		users.set_id(id);
+		users.setId(id);
 		repository.save(users);
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Users createUser(@Valid @RequestBody Users users) {
-		users.set_id(ObjectId.get());
+		users.setId(ObjectId.get());
 		repository.save(users);
 		return users;
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void deleteUser(@PathVariable ObjectId id) {
-		repository.delete(repository.findBy_id(id));;
+		repository.delete(repository.findById(id));;
 	}
 	
 }

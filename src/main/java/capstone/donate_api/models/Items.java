@@ -3,33 +3,42 @@ package capstone.donate_api.models;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
-public class Wishlists {
+public class Items {
 	@Id
-	public ObjectId _id;
+	public ObjectId id;
 	
-	public String user_id;
-	public String item;
+	public String userId;
+	public String type;
+	public String title;
 	public String category;
 	public String description;
 	public Integer qty;
 	public String status;
 	
-	public Wishlists() {}
+	public Items() {}
 	
-	public Wishlists(ObjectId _id, String item, String category, String description, Integer qty, String status) {
-		this._id = _id;
-		this.item = item;
+	public Items(ObjectId id, String userId, String type, String title, String category, String description, Integer qty, String status) {
+		this.id = id;
+		this.userId = userId;
+		this.type = type;
+		this.title = title;
 		this.category = category;
 		this.description = description;
 		this.qty = qty;
 		this.status = status;
 	}
 	
-	public String get_id() { return _id.toHexString(); }
-	public void set_id(ObjectId _id) { this._id = _id; }
+	public String getId() { return id.toHexString(); }
+	public void setId(ObjectId id) { this.id = id; }
 	
-	public String getItem() { return item; }
-	public void setItem(String item) { this.item = item; }
+	public String getUserId() { return userId; }
+	public void setUserId(String userId) { this.userId = userId; }
+	
+	public String getType() { return type; }
+	public void setType(String type) { this.type = type; }
+	
+	public String getTitle() { return title; }
+	public void setTitle(String title) { this.title = title; }
 	
 	public String getCategory() { return category; }
 	public void setCategory(String category) { this.category = category; }
