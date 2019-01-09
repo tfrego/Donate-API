@@ -1,5 +1,8 @@
 package capstone.donate_api.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
@@ -14,8 +17,8 @@ public class Items {
 	public String description;
 	public Integer qty;
 	public String status;
-	
-	public Items() {}
+	public List<Items> matches = new ArrayList<Items>();
+
 	
 	public Items(ObjectId id, String userId, String type, String title, String category, String description, Integer qty, String status) {
 		this.id = id;
@@ -51,4 +54,7 @@ public class Items {
 	
 	public String getStatus() { return status; }
 	public void setStatus(String status) { this.status = status; }
+	
+	public List<Items> getMatches() { return matches; }
+	public void setMatches(List<Items> matches) { this.matches = matches; }
 }

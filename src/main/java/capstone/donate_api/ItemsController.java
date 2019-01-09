@@ -52,10 +52,31 @@ public class ItemsController {
 		repository.delete(repository.findById(id));
 	}
 	
-	@GetMapping("/user/{id}")
-	public List<Items> getItemsByUser(@PathVariable("id") String id) {
-		List<Items> items = this.repository.findByUserId(id);
-		return items;
+	@GetMapping("/requests/{id}")
+	public List<Items> getRequestsByUser(@PathVariable("id") String id) {
+		List<Items> requests = this.repository.findByUserIdAndType(id, "request");
+
+		return requests;
+	}
+	
+	@GetMapping("/offers/{id}")
+	public List<Items> getOffersByUser(@PathVariable("id") String id) {
+		List<Items> offers = this.repository.findByUserIdAndType(id, "offer");
+
+		return offers;
+	}
+	
+	@GetMapping("/matches/{id}")
+	public List<Items> getRequestsMatches(@PathVariable("id") String id) {
+		List<Items> userRequests = this.repository.findByUserIdAndType(id, "request");
+		
+		for (Items request : userRequests) {
+			String titleMatch = request.title;
+			List<Items> matches = this.repository.findByTitleLikeAndType(titleMatch, "offer");
+			request.setMatches(matches);
+		}
+		
+		return userRequests;
 	}
 	
 }
