@@ -67,7 +67,7 @@ public class ItemsController {
 	}
 	
 	@GetMapping("/matches/{id}")
-	public List<Items> getRequestsMatches(@PathVariable("id") String id) {
+	public List<Items> getUserRequestsMatches(@PathVariable("id") String id) {
 		List<Items> userRequests = this.repository.findByUserIdAndType(id, "request");
 		
 		for (Items request : userRequests) {
