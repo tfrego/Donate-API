@@ -15,6 +15,7 @@ public class Items {
 	public String title;
 	public String category;
 	public String description;
+	public String imageUrl;
 	public Integer qty;
 	public String status;
 	public List<Items> matches = new ArrayList<Items>();
@@ -48,6 +49,9 @@ public class Items {
 	
 	public String getDescription() { return description; }
 	public void setDescription(String description) { this.description = description; }
+	
+	public String getImageUrl() { return imageUrl; }
+	public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 	
 	public Integer getQty() { return qty; }
 	public void setQty(Integer qty) { this.qty = qty; }

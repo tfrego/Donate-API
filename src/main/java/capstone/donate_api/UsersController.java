@@ -29,9 +29,9 @@ public class UsersController {
 		return repository.findAll();
 	}
 	
-	@GetMapping("/{id}")
-	public Users getUserById(@PathVariable("id") ObjectId id) {
-		return repository.findById(id);
+	@GetMapping("/{uid}")
+	public Users getUserById(@PathVariable("uid") String uid) {
+		return repository.findByUid(uid);
 	}
 	
 	@PutMapping("/{id}")
