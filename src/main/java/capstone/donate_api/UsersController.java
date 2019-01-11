@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import capstone.donate_api.models.Users;
+import capstone.donate_api.models.User;
 import capstone.donate_api.repositories.UsersRepository;
 
 @RestController
@@ -25,26 +25,26 @@ public class UsersController {
 	private UsersRepository repository;
 	
 	@GetMapping("/")
-	public List<Users> getAllUsers() {
+	public List<User> getAllUsers() {
 		return repository.findAll();
 	}
 	
 	@GetMapping("/{uid}")
-	public Users getUserById(@PathVariable("uid") String uid) {
+	public User getUserById(@PathVariable("uid") String uid) {
 		return repository.findByUid(uid);
 	}
 	
 	@PutMapping("/{id}")
-	public void modifyUserById(@PathVariable("id") ObjectId id, @Valid @RequestBody Users users) {
-		users.setId(id);
-		repository.save(users);
+	public void modifyUserById(@PathVariable("id") ObjectId id, @Valid @RequestBody User user) {
+		user.setId(id);
+		repository.save(user);
 	}
 	
 	@PostMapping("/")
-	public Users createUser(@Valid @RequestBody Users users) {
-		users.setId(ObjectId.get());
-		repository.save(users);
-		return users;
+	public User createUser(@Valid @RequestBody User user) {
+		user.setId(ObjectId.get());
+		repository.save(user);
+		return user;
 	}
 	
 	@DeleteMapping("/{id}")
