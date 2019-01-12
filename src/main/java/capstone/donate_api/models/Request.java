@@ -14,19 +14,17 @@ public class Request {
 	public String title;
 	public String category;
 	public String description;
-	public List<String> images;
 	public Integer qty;
 	public String status;
 	public List<Offer> matches = new ArrayList<Offer>();
 
 	
-	public Request(ObjectId id, String userId, String title, String category, String description, List<String> images, Integer qty, String status) {
+	public Request(ObjectId id, String userId, String title, String category, String description, Integer qty, String status) {
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
 		this.category = category;
 		this.description = description;
-		this.images = images;
 		this.qty = qty;
 		this.status = status;
 	}
@@ -45,9 +43,6 @@ public class Request {
 	
 	public String getDescription() { return description; }
 	public void setDescription(String description) { this.description = description; }
-	
-	public List<String> getImages() { return images; }
-	public void setImages(List<String> images) { this.images = images; }
 	
 	public Integer getQty() { return qty; }
 	public void setQty(Integer qty) { this.qty = qty; }
