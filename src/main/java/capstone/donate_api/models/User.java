@@ -1,5 +1,8 @@
 package capstone.donate_api.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
@@ -12,6 +15,7 @@ public class User {
 	public String email;
 	public String about;
 	public Location location;
+	public List<Request> requests = new ArrayList<Request>();
 	
 	public User(ObjectId id, String uid, String name, String email, String about, Location location) {
 		this.id = id;
@@ -39,4 +43,7 @@ public class User {
 	
 	public Location getLocation() { return location; }
 	public void setLocation(Location location) { this.location = location; }
+	
+	public List<Request> getRequests() { return requests; }
+	public void setRequests(List<Request> requests) { this.requests = requests; }
 }

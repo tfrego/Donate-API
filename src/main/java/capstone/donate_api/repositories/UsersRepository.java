@@ -7,5 +7,6 @@ import capstone.donate_api.models.User;
 
 public interface UsersRepository extends MongoRepository<User, String> {
 	User findById(ObjectId id);
+	
 	User findByUid(String uid);
 }

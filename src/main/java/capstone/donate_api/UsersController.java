@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import capstone.donate_api.models.Offer;
+import capstone.donate_api.models.Request;
 import capstone.donate_api.models.User;
+import capstone.donate_api.repositories.RequestsRepository;
 import capstone.donate_api.repositories.UsersRepository;
 
 @RestController
@@ -23,6 +26,9 @@ import capstone.donate_api.repositories.UsersRepository;
 public class UsersController {
 	@Autowired
 	private UsersRepository repository;
+	
+	@Autowired
+	private RequestsRepository requestsRepository;
 	
 	@GetMapping("/")
 	public List<User> getAllUsers() {
@@ -50,6 +56,19 @@ public class UsersController {
 	@DeleteMapping("/{id}")
 	public void deleteUser(@PathVariable ObjectId id) {
 		repository.delete(repository.findById(id));;
+	}
+	
+	@GetMapping("/requests/")
+	public List<User> getAllUserRequests() {
+		List<User> allUsers = repository.findAll();
+		
+		for (User user : allUsers) {
+			String userId = user.uid;
+			List<Request> userRequests = this.requestsRepository.findByUserId(userId);
+			user.setRequests(userRequests);
+		}
+		
+		return allUsers;
 	}
 	
 }
