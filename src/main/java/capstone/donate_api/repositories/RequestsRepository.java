@@ -12,5 +12,5 @@ public interface RequestsRepository extends MongoRepository<Request, String> {
 	
 	List<Request> findByUserId(String id);
 	
-	List<Request> findByTitleLike(String title);
+	List<Request> findByDescriptionLike(String description);
 }

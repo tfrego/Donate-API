@@ -63,8 +63,8 @@ public class OffersController {
 		List<Offer> userOffers = this.repository.findByUserId(id);
 		
 		for (Offer offer : userOffers) {
-			String titleMatch = offer.title;
-			List<Request> requestMatches = this.requestsRepository.findByTitleLike(titleMatch);
+			String titleMatch = offer.title.toLowerCase();
+			List<Request> requestMatches = this.requestsRepository.findByDescriptionLike(titleMatch);
 			offer.setMatches(requestMatches);;
 		}
 

@@ -12,5 +12,5 @@ public interface OffersRepository extends MongoRepository<Offer, String> {
 	
 	List<Offer> findByUserId(String id);
 	
-	List<Offer> findByTitleLike(String title);
+	List<Offer> findByDescriptionLike(String description);
 }
