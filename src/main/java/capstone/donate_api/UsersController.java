@@ -64,7 +64,7 @@ public class UsersController {
 		
 		for (User user : allUsers) {
 			String userId = user.uid;
-			List<Request> userRequests = this.requestsRepository.findByUserId(userId);
+			List<Request> userRequests = this.requestsRepository.findByUserIdAndStatus(userId, "active");
 			user.setRequests(userRequests);
 		}
 		

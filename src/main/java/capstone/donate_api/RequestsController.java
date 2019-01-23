@@ -58,13 +58,18 @@ public class RequestsController {
 		repository.delete(repository.findById(id));
 	}
 	
+	@GetMapping("/active")
+	public List<Request> getAllActiveItems() {
+		return repository.findByStatus("active");
+	}
+	
 	@GetMapping("/user/{id}")
 	public List<Request> getRequestsByUser(@PathVariable("id") String id) {
-		List<Request> userRequests = this.repository.findByUserId(id);
+		List<Request> userRequests = this.repository.findByUserIdAndStatus(id, "active");
 		
 		for (Request request : userRequests) {
 			String titleMatch = request.title.toLowerCase();
-			List<Offer> offerMatches = this.offersRepository.findByDescriptionLike(titleMatch);
+			List<Offer> offerMatches = this.offersRepository.findByDescriptionLikeAndStatus(titleMatch, "active");
 			request.setMatches(offerMatches);;
 		}
 

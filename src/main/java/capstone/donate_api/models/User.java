@@ -14,15 +14,17 @@ public class User {
 	public String name;
 	public String email;
 	public String about;
+	public String photo;
 	public Location location;
 	public List<Request> requests = new ArrayList<Request>();
 	
-	public User(ObjectId id, String uid, String name, String email, String about, Location location) {
+	public User(ObjectId id, String uid, String name, String email, String about, String photo, Location location) {
 		this.id = id;
 		this.uid = uid;
 		this.name = name;
 		this.email = email;
 		this.about = about;
+		this.photo = photo;
 		this.location = location;
 	}
 	
@@ -40,6 +42,9 @@ public class User {
 	
 	public String getAbout() { return about; }
 	public void setAbout(String about) { this.about = about; }
+	
+	public String getPhoto() { return photo; }
+	public void setPhoto(String photo) { this.photo = photo; }
 	
 	public Location getLocation() { return location; }
 	public void setLocation(Location location) { this.location = location; }

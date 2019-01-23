@@ -58,13 +58,18 @@ public class OffersController {
 		repository.delete(repository.findById(id));
 	}
 	
+	@GetMapping("/active")
+	public List<Offer> getAllActiveItems() {
+		return repository.findByStatus("active");
+	}
+	
 	@GetMapping("/user/{id}")
 	public List<Offer> getOffersByUser(@PathVariable("id") String id) {
-		List<Offer> userOffers = this.repository.findByUserId(id);
+		List<Offer> userOffers = this.repository.findByUserIdAndStatus(id, "active");
 		
 		for (Offer offer : userOffers) {
 			String titleMatch = offer.title.toLowerCase();
-			List<Request> requestMatches = this.requestsRepository.findByDescriptionLike(titleMatch);
+			List<Request> requestMatches = this.requestsRepository.findByDescriptionLikeAndStatus(titleMatch, "active");
 			offer.setMatches(requestMatches);;
 		}
 

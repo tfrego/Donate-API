@@ -10,7 +10,9 @@ import capstone.donate_api.models.Offer;
 public interface OffersRepository extends MongoRepository<Offer, String> {
 	Offer findById(ObjectId id);
 	
-	List<Offer> findByUserId(String id);
+	List<Offer> findByStatus(String status);
 	
-	List<Offer> findByDescriptionLike(String description);
+	List<Offer> findByUserIdAndStatus(String id, String status);
+	
+	List<Offer> findByDescriptionLikeAndStatus(String description, String status);
 }
